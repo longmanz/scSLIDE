@@ -1,39 +1,27 @@
 # scSLIDE
 
-**Single Cell Sketching and Landmark Integrated Dimensional Embedding**
+**Single-cell Sample-Level Integration using Density Estimation**
 
-scSLIDE is an R package that extends Seurat with advanced functionality for single-cell RNA sequencing analysis. It provides enhanced methods for dimensionality reduction, sketching, trajectory analysis, and sample-level aggregation for large-scale single-cell datasets.
+scSLIDE is an R package to perform sample-level analysis for multi-sample single-cell RNA sequencing data. It leverages a semi-supervised dimensional reduction framework to embed cells into a latent space that robustly retains both their underlying type- and state-identity as well as phenotype-driven differences. Each sample is then represented as a probability distribution of cellular states, yielding a sample-level representation that can be directly used for clustering, trajectory inference, and integrative analyses.
 
-## Features
+## Key Features
 
 ### Dimensionality Reduction
 - **RunPLS**: Partial Least Squares (PLS) dimensionality reduction with support for plsr, spls, and cppls methods
-- **RunDiffusionMap**: Diffusion map analysis for trajectory inference
-
-### Enhanced Sketching
-- **SketchDataByGroup**: Group-aware sketching that maintains representation across cell types and conditions
-- **FindmmNN**: Multi-modal nearest neighbor finding for integrated analysis
+- **RunDiffusionMap**: Diffusion map analysis for trajectory inference 
 
 ### Sample-Level Analysis
 - **PrepareSampleObject**: Comprehensive workflow for preparing single-cell data for sample-level analysis
 - **GenerateSampleObject**: Generate sample-level count matrices from single-cell data
-- **NormalizeChiSquared**: Chi-squared normalization for sample-level data
 
-### Trajectory Analysis
+### Novel Differential Expression Test
 - **TrajDETest**: Trajectory-based differential expression analysis using negative binomial regression
-- **QuickCorTest**: Fast correlation testing between genes and response variables
-
-### Visualization
-- **BuildLandmarkObject**: Build landmark objects with correlation analysis and UMAP embedding
-- **PlotLandmarkObject**: Visualize landmark-trajectory correlations
-- **SampleLevelDimPlot**: Sample-level visualization combining correlation and density plots
-- **RunAndProjectUMAP**: Generate UMAP for sketched data and project to full dataset
 
 ## Installation
 
 ```r
 # Install from GitHub (when available)
-# devtools::install_github("yourusername/scSLIDE")
+# devtools::install_github("longmanz/scSLIDE")
 
 # For now, install dependencies
 install.packages(c("pls", "spls", "glmGamPoi", "edgeR", "destiny", 
@@ -41,35 +29,6 @@ install.packages(c("pls", "spls", "glmGamPoi", "edgeR", "destiny",
 
 # Install Seurat and SeuratObject
 install.packages("Seurat")
-```
-
-## Quick Start
-
-```r
-library(scSLIDE)
-library(Seurat)
-
-# Load your Seurat object
-seurat_obj <- your_seurat_object
-
-# Run PLS dimensionality reduction
-seurat_obj <- RunPLS(seurat_obj, Y = "condition", ncomp = 10)
-
-# Enhanced sketching by group
-sketched_obj <- SketchDataByGroup(seurat_obj, 
-                                  group.by = "cell_type", 
-                                  ncells = 500)
-
-# Trajectory analysis
-de_results <- TrajDETest(seurat_obj, traj.var = "pseudotime")
-
-# Sample-level analysis workflow
-prepared_obj <- PrepareSampleObject(seurat_obj, 
-                                    Y = "condition",
-                                    group.by.Sketch = "cell_type")
-
-sample_obj <- GenerateSampleObject(prepared_obj, 
-                                   group.by = "donor_id")
 ```
 
 ## Dependencies
