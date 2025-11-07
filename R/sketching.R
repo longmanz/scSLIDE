@@ -233,7 +233,6 @@ SketchDataByGroup <- function(
     for (layer_name in layer.names) {
       layer_cells <- Cells(object[[assay]], layer = layer_name)
       group_layer_cells <- intersect(group_cells, layer_cells)
-
       if (length(group_layer_cells) == 0) {
         next
       }

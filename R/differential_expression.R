@@ -138,7 +138,7 @@ TrajDETest.Assay <- function(
   fc.results <- FoldChange(object = LayerData(object = object, layer = 'data'),
                            cells.1 = idx_group_bottom,
                            cells.2 = idx_group_top,
-                           mean.fxn = function(x) log(x = (rowSums(x = expm1(x = x)) + pseudocount.use)/NCOL(x), base = 2),
+                           mean.fxn = function(x) log(x = (SeuratObject::rowSums(x = expm1(x = x)) + pseudocount.use)/NCOL(x), base = 2),
                            fc.name = "avg_log2FC",
                            pseudocount.use = pseudocount.use,
                            features = idx_for_DE)
@@ -344,7 +344,7 @@ QuickCorTest <- function(
     # get X - extract data only once
     df_data <- LayerData(object = data.use, assay = assay, layer = layer, cells = idx)
     # Calculate gene percentage more efficiently
-    idx_rowCount <- rowSums(x = df_data > 0) >= min.pct*ncol(df_data)
+    idx_rowCount <- SeuratObject::rowSums(x = df_data > 0) >= min.pct*ncol(df_data)
     df_data <- df_data[idx_rowCount, , drop = FALSE]
     # Calculate correlation more efficiently
     cor_res = apply(df_data, MARGIN = 1, FUN = function(x) {

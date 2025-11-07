@@ -33,7 +33,7 @@
 #' seurat_obj <- RunPLS(seurat_obj, Y = "condition", ncomp = 10)
 #' }
 #'
-#' @importFrom pls plsr cppls
+#' @import pls
 #' @importFrom spls spls
 #' @importFrom stats model.matrix
 #' @importFrom SeuratObject CreateDimReducObject DefaultAssay Assays Cells

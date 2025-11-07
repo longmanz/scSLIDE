@@ -44,8 +44,8 @@ NormalizeChiSquared.default <- function(
   #
   ct_matrix <- object
   # calculate the row sums and column sums
-  col_Sums_ct <- colSums(ct_matrix)
-  row_Sums_ct <- rowSums(ct_matrix)
+  col_Sums_ct <- SeuratObject::colSums(ct_matrix)
+  row_Sums_ct <- SeuratObject::rowSums(ct_matrix)
   total_ct <- sum(ct_matrix)
   # the expected count matrix
   expect_ct_matrix <- t(outer(col_Sums_ct, row_Sums_ct)/total_ct)

@@ -60,6 +60,14 @@ FindmmNN <- function(
     stop("sketch.assay is not correctly defined. please check.")
   }
   sketch_cells <- Cells(object[[sketch.assay]])
+  
+  # check if knn.range is too large and needs to be fixed
+  if(knn.range > length(sketch_cells)){
+      knn.range <- length(sketch_cells)
+      warning("The number of knn.range is exceeding the number of available landmarks. Resetting it to length(landmarks) = ", 
+              length(sketch_cells))
+  }
+  
   sketch_obj <- subset(object, cells = sketch_cells)
   # query_obj <- subset(object, cells = sketch_cells, invert = T)
   # run WNN

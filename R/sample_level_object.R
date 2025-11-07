@@ -98,7 +98,13 @@ PrepareSampleObject <- function(
   } else {
     training.assay.name <- assay
   }
-
+  
+  # an extra step to make sure variableFeatures is set 
+  var_feature <- VariableFeatures(object)
+  if(length(var_feature) <= 0) {
+      stop("Please run FindVariableFeatures() or manually set VariableFeatures for this object.")
+  }
+  
   # whether to perform additional cor.test to get more relevant genes for PLS training
   if(isTRUE(x = add.hvg)){
     deg_list <- QuickCorTest(object,
@@ -121,13 +127,14 @@ PrepareSampleObject <- function(
     }
   }
   if(length(all_HVG) < 1) stop("The number of highly variable genes (HVGs) for running PLS is 0, something is wrong.")
-
+  
   # to get a assay for the landmark cells
   object <- SketchData(object,
                        assay = training.assay.name,
                        ncells = ncells.landmark,
                        sketched.assay = landmark.assay.name,
                        method = landmark.sketch.method,
+                       features = var_feature, 
                        verbose = verbose,
                        ...)
 
@@ -310,7 +317,7 @@ GenerateSampleObject <- function(
   for(SAMPLE_ID in colnames(category.matrix)){
     cell_idx <- rownames(category.matrix)[which(category.matrix[, SAMPLE_ID] == 1)]
     cell_idx <- cell_idx[! cell_idx %in% rownames(raw_ct_mat)]
-    landmark_ct_mat[, i] <- rowSums(raw_ct_mat[, cell_idx])
+    landmark_ct_mat[, i] <- SeuratObject::rowSums(raw_ct_mat[, cell_idx])
     i <- i + 1
   }
 
