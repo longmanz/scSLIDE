@@ -28,7 +28,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install(c("glmGamPoi", "destiny"))
 
 # Install CRAN dependencies
-install.packages(c("pls", "spls", "ggplot2", "dplyr", "tidyr", "RColorBrewer"))
+install.packages(c("pls", "spls", "ggplot2", "dplyr", "tidyr", "RColorBrewer", "future"))
 
 # Install Seurat and SeuratObject
 install.packages("Seurat")
