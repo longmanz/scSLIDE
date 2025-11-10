@@ -59,6 +59,7 @@
 #'
 #' @importFrom SeuratObject DefaultAssay DefaultAssay<- Assays VariableFeatures VariableFeatures<- CreateDimReducObject
 #' @importFrom Seurat ScaleData ProjectCellEmbeddings SketchData
+#' @importFrom future plan
 #'
 PrepareSampleObject <- function(
     object = NULL,

@@ -13,8 +13,8 @@ URL: https://github.com/yourusername/scSLIDE
 BugReports: https://github.com/yourusername/scSLIDE/issues
 Depends:
     R (>= 4.0.0),
-    Seurat (>= 5.0.0),
-    SeuratObject (>= 5.0.2)
+    Seurat (>= 5.0.1),
+    SeuratObject (>= 5.0.0)
 Imports:
     methods,
     Matrix,
@@ -29,7 +29,8 @@ Imports:
     stats,
     utils,
     RSpectra,
-    irlba
+    irlba,
+    future
 Suggests:
     knn.covertree,
     testthat (>= 3.0.0)
