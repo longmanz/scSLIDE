@@ -30,8 +30,11 @@ BiocManager::install(c("glmGamPoi", "destiny"))
 # Install CRAN dependencies
 install.packages(c("pls", "spls", "ggplot2", "dplyr", "tidyr", "RColorBrewer", "future"))
 
-# Install Seurat and SeuratObject
-install.packages("Seurat")
+# Install SeuratObject 
+install.packages("SeuratObject")
+
+# Install Seurat from a developmental branch that is compatible with scSLIDE (built upon v5.3.1) 
+remotes::install_github("satijalab/seurat", "v5.3.1_scSLIDE_compatible")
 
 # Install scSLIDE from GitHub
 devtools::install_github("longmanz/scSLIDE")
