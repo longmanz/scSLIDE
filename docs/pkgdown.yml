@@ -1,0 +1,6 @@
+pandoc: '3.4'
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  scSLIDE_COVID19: scSLIDE_COVID19.html
+last_built: 2025-11-14T18:17Z
