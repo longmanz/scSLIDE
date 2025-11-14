@@ -48,6 +48,9 @@ scSLIDE depends on:
 - **destiny**: Diffusion map analysis
 - **ggplot2, dplyr, tidyr, RColorBrewer**: Visualization and data manipulation
 
+## Tutorial
+A tutorial for running the scSLIDE package is provided [here](https://longmanz.github.io/scSLIDE/). 
+
 ## Citation
 
 If you use scSLIDE in your research, please cite:
