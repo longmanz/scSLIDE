@@ -9,8 +9,8 @@ Description: scSLIDE extends Seurat with advanced functionality for single-cell 
     including partial least squares (PLS) dimensionality reduction, enhanced sketching methods, 
     trajectory analysis, and sample-level aggregation methods for large-scale single-cell datasets.
 License: MIT + file LICENSE
-URL: https://github.com/yourusername/scSLIDE
-BugReports: https://github.com/yourusername/scSLIDE/issues
+URL: https://github.com/satijalab/scSLIDE
+BugReports: https://github.com/satijalab/scSLIDE/issues
 Depends:
     R (>= 4.0.0),
     Seurat (>= 5.0.1),
