@@ -34,7 +34,7 @@ install.packages("SeuratObject")
 remotes::install_github("satijalab/seurat", "v5.3.1_scSLIDE_compatible")
 
 # Install scSLIDE from GitHub
-devtools::install_github("longmanz/scSLIDE")
+devtools::install_github("satijalab/scSLIDE")
 ```
 
 ## Dependencies
